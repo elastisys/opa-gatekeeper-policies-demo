@@ -1,6 +1,6 @@
 # opa-gatekeeper-policies-demo
 
-Showcases some simple Policy as Code policies in [Elastisys Compliant Kubernetes](https://elastisys.io/compliantkubernetes/).
+Showcases some simple Policy as Code policies in [Elastisys Compliant Kubernetes](https://elastisys.io/compliantkubernetes/). Because it's supposed to be easy to do the right thing, and very difficult to do the wrong thing. Especially when it comes to security.
 
 1. Make sure you have your credentials set up correctly for your Compliant Kubernetes environment.
 1. `kubectl apply -f namespace.yaml` to create the Namespace that we will use. It will be a descendant Namespace of the `staging` Namespace, and as such, it will inherit resources and important labels, such as the ones related to Pod Security Admission. See [Compliant Kubernetes documentation on Namespaces](https://elastisys.io/compliantkubernetes/user-guide/namespaces/) for more information.
