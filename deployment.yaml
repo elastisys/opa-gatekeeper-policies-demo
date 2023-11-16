@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: webserver
+  name: webserver
+  namespace: opa-gatekeeper-policies-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webserver
+  template:
+    metadata:
+      labels:
+        app: webserver
+    spec:
+      automountServiceAccountToken: false
+      containers:
+        - image: harbor.long-running.dev-ck8s.com/opa-gatekeeper-policies-demo/nginx-unprivileged@sha256:483abfdcff1426ff1d2c8a9be9a12569b94c84f66aa2412752be6185866a33cc
+          name: nginx
+          resources:
+            requests:
+              cpu: 50m
+              memory: 128M
+            limits:
+              cpu: 100m
+              memory: 128M
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            seccompProfile:
+              type: "RuntimeDefault"
+            capabilities:
+              drop:
+                - "ALL"
