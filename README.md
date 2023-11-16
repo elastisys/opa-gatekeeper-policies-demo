@@ -98,3 +98,5 @@ At this point, we are done! We have addressed all of the Compliant Kubernetes sa
 As one small addition, which is not a safeguard, we can make our deployment **even more secure** by disallowing it any Kubernetes API access, because we are not supposed to do any such calls. And if we are not supposed to make them, we should not have the permissions to do so. So let's just add one more line to the spec of the Pod spec, namely, `automountServiceAccountToken: false`
 
 The full, working Deployment, is in `deployment.yaml` -- try deploying it, and you will see that it works: `kubectl apply -f deployment.yaml`
+
+Clean it all up by just deleting the Namespace: `kubectl delete -f namespace.yaml`
